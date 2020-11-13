@@ -1,5 +1,12 @@
 # Matrix Synapse, Elements Web, Coturn
 
+Instructions to use Matrix Synapse, Elements Web, Coturn via docker behind an nginx reverseproxy.
+
+Optional:
+
+- OpenLDAP integration
+- Postgres integration
+
 ## Matrix Synapse
 
 1. Create a directory for the configuration files: `mkdir synapse`
