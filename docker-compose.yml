@@ -1,0 +1,55 @@
+version: "3.3"
+
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    container_name: matrix_synapse
+    volumes:
+      - ./synapse:/data
+      - ../../data/synapse_media_store:/media_store
+    networks: 
+      - default
+      - database_network
+      - openldap_network
+      - container_network
+    
+  synapseadmin:
+    image: awesometechnologies/synapse-admin
+    container_name: matrix_admin
+    networks: 
+      - container_network
+    
+  elements:
+    image: vectorim/riot-web
+    container_name: matrix_elements
+    volumes:
+      - ./elements_web/config.json:/app/config.json
+    networks: 
+      - default
+      - container_network
+      
+  coturn:
+    image: instrumentisto/coturn
+    container_name: matrix_coturn
+    ports:
+      - "3478:3478"
+      - "5349:5349"
+      - "49152-49172:49152-49172/udp"
+    volumes:
+      - ./coturn/turnserver.conf:/etc/coturn/turnserver.conf
+      - ../cert:/cert
+    networks: 
+      - default
+      
+
+
+networks:
+  container_network:
+    external:
+      name: container_network
+  database_network:
+    external:
+      name: database_network
+  openldap_network:
+    external:
+      name: openldap_network
