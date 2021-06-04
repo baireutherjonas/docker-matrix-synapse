@@ -45,7 +45,7 @@ Setup for database can here found: [https://github.com/matrix-org/synapse/blob/d
 
 ### Openldap integration
 
-Install openldap see [https://github.com/baireutherjonas/docker-openldap](https://github.com/baireutherjonas/docker-openldap).
+Install openldap.
 
 Configure matrix synapse to allow login via openldap insert the following block in the `homeserver.yaml` file
 
@@ -81,7 +81,7 @@ Replace the following placeholders in the  `elements_web/config.json`
 
 ## Nginx - Reverseproxy
 
-Setup the nginx reverseproxy like [https://github.com/baireutherjonas/nginx-reverseproxy](https://github.com/baireutherjonas/nginx-reverseproxy)
+Setup the nginx reverseproxy.
 
 Add the following new endpoints to the `nginx.conf`. The config is needed for the following ports 80/443 and 8448
 
